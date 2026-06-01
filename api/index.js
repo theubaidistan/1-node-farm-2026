@@ -36,7 +36,7 @@ module.exports = (req, res) => {
 
   // ---------------- FAVICON ----------------
   if (pathname === '/favicon.ico') {
-    const favicon = fs.readFileSync(path.join(__dirname, '../favicon.ico'));
+    const favicon = fs.readFileSync(path.join(__dirname, './favicon.ico'));
 
     res.setHeader('Content-Type', 'image/x-icon');
     return res.end(favicon);
