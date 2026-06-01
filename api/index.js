@@ -34,6 +34,14 @@ const slugs = dataObj.map((el) => slugify(el.productName, { lower: true }));
 module.exports = (req, res) => {
   const { pathname, query } = url.parse(req.url, true);
 
+  // ---------------- FAVICON ----------------
+  if (pathname === '/favicon.ico') {
+    const favicon = fs.readFileSync(path.join(__dirname, '../favicon.ico'));
+
+    res.setHeader('Content-Type', 'image/x-icon');
+    return res.end(favicon);
+  }
+
   // ---------------- OVERVIEW ----------------
   if (pathname === '/' || pathname === '/overview') {
     const cardsHtml = dataObj
